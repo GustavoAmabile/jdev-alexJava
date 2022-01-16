@@ -7,15 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 /*módulo 9 curso alexJava*/
-public class Aluno {
+public class Aluno extends Pessoa{
 
-    private String nome;
-    private int idade;
-    private String dataNascimento;
-    private String registroGeral;
-    private String numeroCpf;
-    private String nomeMae;
-    private String nomePai;
+
     private String dataMatricula;
     private String nomeEscola;
     private String serieMatriculado;
@@ -185,5 +179,14 @@ public class Aluno {
                 ", dataMatricula='" + dataMatricula + '\'' +
                 ", nomeEscola='" + nomeEscola + '\'' +
                 ", serieMatriculado='" + serieMatriculado + '\'' + '}';
+    }
+
+    @Override/*Identifica método sobrescrito*/
+    public boolean pessoaMaiorIdade() {
+        return idade >= 21;
+    }
+
+    public String msgMaiorIdade(){
+        return this.pessoaMaiorIdade() ? "Aluno maior de idade" : "Aluno menor de idade";
     }
 }
