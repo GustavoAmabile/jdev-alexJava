@@ -1,8 +1,12 @@
 package cursojava.executavel;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
+import cursojava.classes.Secretario;
+import cursojava.classesauxiliares.FuncaoAutenticacao;
 import cursojava.constantes.StatusAluno;
+import cursojava.interfaces.PermitirAcesso;
 
 import javax.naming.spi.DirObjectFactory;
 import javax.swing.*;
@@ -16,8 +20,13 @@ public class primeiraClasseJava {
         String login = JOptionPane.showInputDialog("Informe o login");
         String senha = JOptionPane.showInputDialog("Informe a senha");
 
-        if(login.equalsIgnoreCase("admin")
-         && senha.equals("admin"))
+
+
+
+
+
+
+        if(new FuncaoAutenticacao(new Diretor(login, senha)).autenticar())/*Vou travar o contrato para autorizar somente quem tem o contrato 100% legítimo*/
         {
 
             List<Aluno> alunos = new ArrayList<>();
@@ -109,6 +118,8 @@ public class primeiraClasseJava {
 
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Acesso não permitido");
         }
 
     }

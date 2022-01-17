@@ -1,10 +1,26 @@
 package cursojava.classes;
 
-public class Diretor extends Pessoa{
+import cursojava.interfaces.PermitirAcesso;
+
+public class Diretor extends Pessoa implements PermitirAcesso {
 
     private String registroEducacao;
     private int tempoDirecao;
     private int titulacao;
+
+    private String login;
+    private String senha;
+
+    public Diretor() {
+    }
+
+    public Diretor(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+
+    }
+
+
 
     public String getRegistroEducacao() {
         return registroEducacao;
@@ -44,5 +60,22 @@ public class Diretor extends Pessoa{
                 ", nomeMae='" + nomeMae + '\'' +
                 ", nomePai='" + nomePai + '\'' +
                 '}';
+    }
+
+    @Override
+    public double salario() {
+        return 3700.89;
+    }
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
+        return autenticar();
+    }
+
+    @Override
+    public boolean autenticar() {
+        return login.equals("dir") && senha.equals("dir");
     }
 }
